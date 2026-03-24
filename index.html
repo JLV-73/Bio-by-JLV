@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bio by JLV — Exploration de l'ADN et du Monde Bactérien</title>
+  <meta name="description" content="Plateforme éducative immersive sur l'ADN et les bactéries. Visualisations 3D interactives, contenu pédagogique et modules scientifiques.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700&family=Oxanium:wght@400;600;700;800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="logo_JLV.jpg" type="image/jpeg">
+</head>
+<body>
+
+  <!-- ========== HEADER ========== -->
+  <header class="site-header" id="header">
+    <a href="#hero" class="header-brand">Bio <span>by JLV</span></a>
+    <nav class="header-nav" id="nav">
+      <a href="#adn">ADN</a>
+      <a href="#adn-3d">Module 3D</a>
+      <a href="#bacteries">Bactéries</a>
+      <a href="#comparaison">Comparaison</a>
+      <a href="#applications">Applications</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <img src="logo_JLV.jpg" alt="Logo JLV" class="header-logo">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-badge">Plateforme éducative interactive</div>
+      <h1>Bio <span class="accent">by JLV</span></h1>
+      <p class="hero-subtitle">
+        Plongez au cœur de la biologie moléculaire. Explorez l'ADN et le monde bactérien
+        à travers des visualisations 3D interactives.
+      </p>
+      <div class="hero-cta">
+        <a href="#adn" class="btn btn-primary">Explorer l'ADN ↓</a>
+        <a href="#bacteries" class="btn btn-ghost">Découvrir les bactéries</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ========== SECTION ADN ========== -->
+  <div class="section-divider"></div>
+  <section class="section" id="adn">
+    <div class="section-inner">
+      <div class="section-label" data-aos="fade-right">01 — Acide Désoxyribonucléique</div>
+      <h2 class="section-title" data-aos="fade-up">L'ADN : le code de la vie</h2>
+      <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+        L'acide désoxyribonucléique est la molécule qui contient l'ensemble des informations
+        génétiques d'un organisme vivant. Découvrez sa structure, ses composants et ses mécanismes fondamentaux.
+      </p>
+
+      <!-- Stats -->
+      <div class="stats-row" data-aos="fade-up" data-aos-delay="150">
+        <div class="stat">
+          <div class="stat-value">3,2 Mrd</div>
+          <div class="stat-label">paires de bases humaines</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">~20 000</div>
+          <div class="stat-label">gènes codants</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">2 m</div>
+          <div class="stat-label">longueur déroulée par cellule</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">99,9%</div>
+          <div class="stat-label">ADN identique entre humains</div>
+        </div>
+      </div>
+
+      <!-- Info block : Structure -->
+      <div class="info-block" data-aos="fade-up">
+        <div class="info-text">
+          <h3>La double hélice</h3>
+          <p>
+            Découverte en 1953 par Watson et Crick, la structure en double hélice de l'ADN est l'une
+            des plus élégantes architectures de la nature. Deux brins complémentaires s'enroulent
+            l'un autour de l'autre, reliés par des liaisons hydrogène entre les bases azotées.
+          </p>
+          <p>
+            Les quatre bases azotées s'apparient toujours de la même façon :
+            <strong>Adénine (A)</strong> avec <strong>Thymine (T)</strong>,
+            et <strong>Cytosine (C)</strong> avec <strong>Guanine (G)</strong>.
+          </p>
+          <div class="bases-row">
+            <span class="base-tag base-A">A</span>
+            <span class="base-tag base-T">T</span>
+            <span class="base-tag base-C">C</span>
+            <span class="base-tag base-G">G</span>
+          </div>
+        </div>
+        <div class="info-visual">
+          <!-- Schéma ADN CSS -->
+          <div class="dna-schema" id="dnaSchema"></div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="card-grid">
+        <div class="card" data-aos="fade-up" data-aos-delay="0">
+          <div class="card-icon">🧬</div>
+          <h3>Réplication de l'ADN</h3>
+          <p>
+            Avant chaque division cellulaire, l'ADN se duplique grâce à l'ADN polymérase.
+            Les deux brins se séparent et chacun sert de matrice pour créer un nouveau brin complémentaire.
+            Ce processus semi-conservatif assure la transmission fidèle de l'information génétique.
+          </p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-icon">🔬</div>
+          <h3>Transcription &amp; Traduction</h3>
+          <p>
+            L'ADN est transcrit en ARN messager dans le noyau, puis traduit en protéines par les ribosomes.
+            Ce flux d'information — le dogme central de la biologie moléculaire — gouverne l'ensemble
+            des fonctions cellulaires.
+          </p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-icon">⚡</div>
+          <h3>Mutations génétiques</h3>
+          <p>
+            Les erreurs de réplication, les rayons UV ou les agents chimiques peuvent altérer la séquence ADN.
+            Ces mutations sont le moteur de l'évolution mais peuvent aussi causer des maladies
+            lorsqu'elles affectent des gènes essentiels.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MODULE 3D ADN ========== -->
+  <div class="section-divider"></div>
+  <section class="section" id="adn-3d">
+    <div class="section-inner">
+      <div class="section-label" data-aos="fade-right">02 — Visualisation interactive</div>
+      <h2 class="section-title" data-aos="fade-up">Module 3D — Double Hélice</h2>
+      <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+        Manipulez un modèle 3D de la double hélice ADN. Ajustez les paramètres, changez les couleurs
+        des bases et explorez la structure sous tous les angles.
+      </p>
+
+      <div class="module-3d" id="dnaModule" data-aos="fade-up" data-aos-delay="200">
+        <div class="module-3d-header">
+          <div class="module-3d-title">
+            🧬 Double Hélice ADN
+          </div>
+          <div class="module-3d-actions">
+            <button id="dnaTogglePanel" title="Paramètres">
+              ⚙️ Paramètres
+            </button>
+            <button id="dnaAutoRotate" class="active" title="Auto-rotation">
+              🔄 Auto
+            </button>
+            <button id="dnaReset" title="Réinitialiser">
+              ↺ Reset
+            </button>
+            <button id="dnaFullscreen" title="Plein écran">
+              ⛶ Plein écran
+            </button>
+          </div>
+        </div>
+        <div class="module-3d-viewport" id="dnaViewport">
+          <!-- Three.js canvas sera injecté ici -->
+
+          <!-- Panneau de contrôle -->
+          <div class="control-panel" id="dnaControls">
+            <h4>⚙️ Paramètres ADN</h4>
+            <div class="control-group">
+              <label>Vitesse de rotation <span id="dnaSpeedVal">1.0×</span></label>
+              <input type="range" id="dnaSpeed" min="0" max="3" step="0.1" value="1">
+            </div>
+            <div class="control-group">
+              <label>Zoom <span id="dnaZoomVal">1.0×</span></label>
+              <input type="range" id="dnaZoom" min="0.5" max="3" step="0.1" value="1">
+            </div>
+            <div class="control-group">
+              <label>Paires de bases <span id="dnaPairsVal">20</span></label>
+              <input type="range" id="dnaPairs" min="5" max="40" step="1" value="20">
+            </div>
+            <div class="control-group">
+              <label>Intensité glow <span id="dnaGlowVal">0.5</span></label>
+              <input type="range" id="dnaGlow" min="0" max="1" step="0.05" value="0.5">
+            </div>
+            <div class="control-group">
+              <label>Mode animation</label>
+              <select class="control-select" id="dnaAnimMode">
+                <option value="rotation">Rotation</option>
+                <option value="pulsation">Pulsation</option>
+                <option value="wave">Onde</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label>Couleurs des bases</label>
+              <div class="color-pickers">
+                <div class="color-pick">
+                  <span style="color:var(--base-A)">A</span>
+                  <input type="color" id="colorA" value="#00e5ff">
+                </div>
+                <div class="color-pick">
+                  <span style="color:var(--base-T)">T</span>
+                  <input type="color" id="colorT" value="#ff2d78">
+                </div>
+                <div class="color-pick">
+                  <span style="color:var(--base-C)">C</span>
+                  <input type="color" id="colorC" value="#ffb800">
+                </div>
+                <div class="color-pick">
+                  <span style="color:var(--base-G)">G</span>
+                  <input type="color" id="colorG" value="#00ff88">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION BACTÉRIES ========== -->
+  <div class="section-divider"></div>
+  <section class="section" id="bacteries">
+    <div class="section-inner">
+      <div class="section-label" data-aos="fade-right">03 — Microbiologie</div>
+      <h2 class="section-title" data-aos="fade-up">Le monde bactérien</h2>
+      <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+        Les bactéries sont des organismes unicellulaires procaryotes, parmi les premières formes de vie
+        apparues sur Terre il y a plus de 3,5 milliards d'années. Elles sont omniprésentes et
+        jouent des rôles essentiels dans tous les écosystèmes.
+      </p>
+
+      <!-- Stats bactéries -->
+      <div class="stats-row" data-aos="fade-up" data-aos-delay="150">
+        <div class="stat">
+          <div class="stat-value">10³⁰</div>
+          <div class="stat-label">bactéries sur Terre</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">39 000 Mrd</div>
+          <div class="stat-label">dans le corps humain</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">0,2 — 10 µm</div>
+          <div class="stat-label">taille typique</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">20 min</div>
+          <div class="stat-label">temps de division (E. coli)</div>
+        </div>
+      </div>
+
+      <!-- Info block : Types -->
+      <div class="info-block" data-aos="fade-up">
+        <div class="info-text">
+          <h3>Formes et classification</h3>
+          <p>
+            Les bactéries se classifient selon leur morphologie en trois grandes catégories :
+          </p>
+          <ul class="highlight-list">
+            <li><strong>Cocci</strong> — sphériques (ex : Staphylococcus, Streptococcus)</li>
+            <li><strong>Bacilles</strong> — en bâtonnets (ex : E. coli, Bacillus)</li>
+            <li><strong>Spirilles</strong> — spiralées (ex : Treponema, Spirillum)</li>
+          </ul>
+          <div class="tag-cloud">
+            <span class="tag">Gram+</span>
+            <span class="tag">Gram−</span>
+            <span class="tag">Aérobies</span>
+            <span class="tag">Anaérobies</span>
+            <span class="tag">Thermophiles</span>
+            <span class="tag">Halophiles</span>
+          </div>
+        </div>
+        <div class="info-visual">
+          <div style="text-align:center;">
+            <div style="font-size:4rem;margin-bottom:16px;">🦠</div>
+            <p style="font-size:0.85rem;color:var(--text-secondary);">
+              Explorez les différentes morphologies<br>dans le module 3D ci-dessous
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Info block : Rôles -->
+      <div class="info-block reverse" data-aos="fade-up">
+        <div class="info-text">
+          <h3>Utiles vs Pathogènes</h3>
+          <p>
+            La grande majorité des bactéries sont bénéfiques ou inoffensives. Notre microbiote intestinal
+            est essentiel à la digestion, à l'immunité et même à la santé mentale.
+          </p>
+          <p>
+            Les bactéries pathogènes ne représentent qu'une infime fraction, mais elles peuvent causer
+            des infections graves. La résistance aux antibiotiques est aujourd'hui l'un des
+            plus grands défis de santé publique mondiale.
+          </p>
+        </div>
+        <div class="info-visual">
+          <div style="text-align:center;">
+            <div style="font-size:4rem;margin-bottom:16px;">⚕️</div>
+            <p style="font-size:0.85rem;color:var(--text-secondary);">
+              <strong style="color:var(--emerald);">~95%</strong> bénéfiques<br>
+              <strong style="color:var(--magenta);">~5%</strong> potentiellement pathogènes
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards bactéries -->
+      <div class="card-grid">
+        <div class="card" data-aos="fade-up" data-aos-delay="0">
+          <div class="card-icon">🔄</div>
+          <h3>Division binaire</h3>
+          <p>
+            Les bactéries se reproduisent par scissiparité : la cellule mère duplique son ADN
+            puis se divise en deux cellules filles identiques. Sous conditions optimales,
+            une population peut doubler toutes les 20 minutes.
+          </p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="100">
+          <div class="card-icon">🛡️</div>
+          <h3>Résistance antibiotique</h3>
+          <p>
+            Par mutations et transfert horizontal de gènes, certaines bactéries développent
+            des résistances aux antibiotiques. Les « superbactéries » multirésistantes
+            représentent une menace croissante pour la médecine moderne.
+          </p>
+        </div>
+        <div class="card" data-aos="fade-up" data-aos-delay="200">
+          <div class="card-icon">🌍</div>
+          <h3>Rôles écologiques</h3>
+          <p>
+            Les bactéries participent aux cycles du carbone, de l'azote et du soufre.
+            Elles décomposent la matière organique, fixent l'azote atmosphérique et sont
+            à la base de nombreuses chaînes alimentaires.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MODULE 3D BACTÉRIES ========== -->
+  <div class="section-divider"></div>
+  <section class="section" id="bacteries-3d">
+    <div class="section-inner">
+      <div class="section-label" data-aos="fade-right">04 — Visualisation interactive</div>
+      <h2 class="section-title" data-aos="fade-up">Module 3D — Bactéries</h2>
+      <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+        Observez différents types de bactéries en 3D. Modifiez leur nombre, leur taille et
+        leur comportement en temps réel.
+      </p>
+
+      <div class="module-3d" id="bacteriaModule" data-aos="fade-up" data-aos-delay="200">
+        <div class="module-3d-header">
+          <div class="module-3d-title">
+            🦠 Bactéries en 3D
+          </div>
+          <div class="module-3d-actions">
+            <button id="bacTogglePanel" title="Paramètres">
+              ⚙️ Paramètres
+            </button>
+            <button id="bacAutoAnim" class="active" title="Animation">
+              ▶ Animation
+            </button>
+            <button id="bacReset" title="Réinitialiser">
+              ↺ Reset
+            </button>
+            <button id="bacFullscreen" title="Plein écran">
+              ⛶ Plein écran
+            </button>
+          </div>
+        </div>
+        <div class="module-3d-viewport" id="bacViewport">
+          <!-- Three.js canvas sera injecté ici -->
+
+          <!-- Panneau de contrôle -->
+          <div class="control-panel" id="bacControls">
+            <h4>⚙️ Paramètres Bactéries</h4>
+            <div class="control-group">
+              <label>Type de bactérie</label>
+              <select class="control-select" id="bacType">
+                <option value="coccus">Coccus (sphérique)</option>
+                <option value="bacillus">Bacille (bâtonnet)</option>
+                <option value="spirillum">Spirille (spiralée)</option>
+                <option value="mixed">Mixte</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label>Nombre <span id="bacCountVal">15</span></label>
+              <input type="range" id="bacCount" min="3" max="50" step="1" value="15">
+            </div>
+            <div class="control-group">
+              <label>Taille <span id="bacSizeVal">1.0×</span></label>
+              <input type="range" id="bacSize" min="0.3" max="2.5" step="0.1" value="1">
+            </div>
+            <div class="control-group">
+              <label>Vitesse <span id="bacSpeedVal">1.0×</span></label>
+              <input type="range" id="bacSpeed" min="0" max="3" step="0.1" value="1">
+            </div>
+            <div class="control-group">
+              <label>Mode</label>
+              <select class="control-select" id="bacMode">
+                <option value="dynamic">Dynamique</option>
+                <option value="static">Statique</option>
+                <option value="colony">Colonie</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <label>Couleur</label>
+              <input type="color" id="bacColor" value="#00e5ff"
+                     style="width:100%;height:32px;border:1px solid var(--border);border-radius:8px;background:none;cursor:pointer;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION COMPARAISON ========== -->
+  <div class="section-divider"></div>
+  <section class="section" id="comparaison">
+    <div class="section-inner">
+      <div class="section-label" data-aos="fade-right">05 — Analyse comparative</div>
+      <h2 class="section-title" data-aos="fade-up">ADN humain vs ADN bactérien</h2>
+      <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+        Bien que l'ADN soit le support universel de l'information génétique, il existe des différences
+        fondamentales entre l'ADN des eucaryotes et celui des procaryotes.
+      </p>
+
+      <div class="comparison-table-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Caractéristique</th>
+              <th><span class="table-head-icon">🧬</span> ADN Humain</th>
+              <th><span class="table-head-icon">🦠</span> ADN Bactérien</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Taille du génome</td>
+              <td>~3,2 milliards de pb</td>
+              <td>~0,5 — 10 millions de pb</td>
+            </tr>
+            <tr>
+              <td>Structure</td>
+              <td>Linéaire, chromosomes multiples</td>
+              <td>Circulaire, chromosome unique + plasmides</td>
+            </tr>
+            <tr>
+              <td>Localisation</td>
+              <td>Noyau cellulaire (+ mitochondries)</td>
+              <td>Nucléoïde (pas de noyau)</td>
+            </tr>
+            <tr>
+              <td>Nombre de gènes</td>
+              <td>~20 000 — 25 000</td>
+              <td>~500 — 7 500</td>
+            </tr>
+            <tr>
+              <td>Introns</td>
+              <td>Nombreux (ADN non codant ~98%)</td>
+              <td>Très rares ou absents</td>
+            </tr>
+            <tr>
+              <td>Histones</td>
+              <td>Oui (empaquetage en chromatine)</td>
+              <td>Non (protéines similaires chez Archées)</td>
+            </tr>
+            <tr>
+              <td>Réplication</td>
+              <td>Multiples origines de réplication</td>
+              <td>Origine unique (oriC)</td>
+            </tr>
+            <tr>
+              <td>Complexité</td>
+              <td>Très élevée (régulation épigénétique)</td>
+              <td>Plus simple, expression directe</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION APPLICATIONS ========== -->
+  <div class="section-divider"></div>
+  <section class="section" id="applications">
+    <div class="section-inner">
+      <div class="section-label" data-aos="fade-right">06 — Le futur de la biologie</div>
+      <h2 class="section-title" data-aos="fade-up">Applications &amp; Innovations</h2>
+      <p class="section-desc" data-aos="fade-up" data-aos-delay="100">
+        La compréhension de l'ADN et des bactéries ouvre des perspectives révolutionnaires
+        en médecine, en biotechnologie et au-delà.
+      </p>
+
+      <div class="apps-grid">
+        <div class="app-card" data-aos="fade-up" data-aos-delay="0" style="--color: var(--cyan);">
+          <span class="app-card-number">01</span>
+          <div class="app-card-icon">🏥</div>
+          <h3>Médecine personnalisée</h3>
+          <p>
+            Le séquençage du génome permet d'adapter les traitements à chaque patient.
+            La pharmacogénomique promet des thérapies ciblées avec moins d'effets secondaires,
+            tandis que la thérapie génique ouvre la voie à la correction de maladies héréditaires.
+          </p>
+        </div>
+        <div class="app-card" data-aos="fade-up" data-aos-delay="100" style="--color: var(--emerald);">
+          <span class="app-card-number">02</span>
+          <div class="app-card-icon">🧪</div>
+          <h3>Biotechnologie</h3>
+          <p>
+            Les bactéries sont de véritables usines biologiques. Elles produisent insuline,
+            antibiotiques, biocarburants et enzymes industrielles. L'ingénierie métabolique
+            permet de programmer des micro-organismes pour des applications inédites.
+          </p>
+        </div>
+        <div class="app-card" data-aos="fade-up" data-aos-delay="200" style="--color: var(--amber);">
+          <span class="app-card-number">03</span>
+          <div class="app-card-icon">🤖</div>
+          <h3>IA + Biologie</h3>
+          <p>
+            L'intelligence artificielle révolutionne la biologie : prédiction de structures protéiques
+            (AlphaFold), découverte de nouveaux antibiotiques, analyse de données génomiques massives
+            et modélisation de systèmes biologiques complexes.
+          </p>
+        </div>
+        <div class="app-card" data-aos="fade-up" data-aos-delay="300" style="--color: var(--magenta);">
+          <span class="app-card-number">04</span>
+          <div class="app-card-icon">✂️</div>
+          <h3>CRISPR &amp; Édition génétique</h3>
+          <p>
+            CRISPR-Cas9, issu du système immunitaire bactérien, permet de modifier l'ADN avec une
+            précision sans précédent. Cette technologie transforme la recherche, l'agriculture
+            et pourrait un jour éradiquer des maladies génétiques.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <div class="section-divider"></div>
+  <footer class="site-footer">
+    <div class="footer-brand">Bio <span>by JLV</span></div>
+    <p class="footer-text">Plateforme éducative sur l'ADN et le monde bactérien</p>
+    <p class="footer-copy">© 2026 Bio by JLV — Projet éducatif. Tous droits réservés.</p>
+  </footer>
+
+  <!-- ========== SCRIPTS ========== -->
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <!-- AOS -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- App -->
+  <script src="script.js"></script>
+</body>
+</html>

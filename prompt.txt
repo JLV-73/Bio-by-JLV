@@ -1,0 +1,152 @@
+🧠 CONTEXTE
+
+Tu es un développeur full-stack expert en visualisation scientifique, UX/UI moderne et pédagogie interactive.
+
+Ta mission est de créer un site web complet, professionnel et immersif intitulé :
+
+👉 "Bio by JLV"
+
+Ce site doit être une plateforme éducative haut de gamme sur :
+
+L’ADN
+Les bactéries
+
+Le rendu doit être visuellement impressionnant, moderne, fluide et interactif, avec un niveau proche d’un site de vulgarisation scientifique premium.
+
+🎨 DESIGN & IDENTITÉ
+Thème : dark mode (fond noir profond)
+Style : futuriste / scientifique / minimaliste
+Inspiration : Apple + Tesla + interfaces scientifiques (type NASA / biotech)
+Typographie : moderne, lisible, élégante
+Animations fluides (scroll, hover, transitions)
+Branding :
+Titre principal : Bio by JLV
+Logo "JLV" en haut à droite - cf photo "logo_JLV"
+Header fixe avec navigation fluide
+🧱 STRUCTURE DU SITE
+1. HERO SECTION
+Titre : Bio by JLV
+Sous-titre : exploration de l’ADN et du monde bactérien
+Animation de fond (particules, ADN stylisé ou réseau moléculaire)
+2. SECTION ADN
+
+Contenu :
+
+Définition simple et pédagogique
+Structure : double hélice
+Bases azotées (A, T, C, G)
+Réplication de l’ADN
+ADN humain vs ADN bactérien
+
+👉 Ajouter :
+
+Schémas explicatifs
+Illustrations scientifiques
+Cartes interactives
+🧬 MODULE INTERACTIF ADN (IMPORTANT)
+
+Créer une zone interactive avec :
+
+Visualisation 3D d’une double hélice ADN
+Rotation automatique + contrôlée
+Animation fluide
+Paramètres modifiables :
+Vitesse de rotation
+Zoom
+Nombre de paires de bases
+Couleurs des bases (A, T, C, G)
+Mode animation (rotation / pulsation)
+
+👉 Technologies recommandées :
+
+Three.js ou équivalent WebGL
+3. SECTION BACTÉRIES
+
+Contenu :
+
+Définition
+Types de bactéries (cocci, bacilles, spirilles…)
+Rôle (utile vs pathogène)
+Reproduction (division binaire)
+Résistance antibiotique
+
+👉 Ajouter :
+
+Illustrations réalistes
+Schémas
+Micrographies (images scientifiques)
+🦠 MODULE INTERACTIF BACTÉRIES
+
+Créer une zone interactive avec :
+
+Visualisation 3D de bactéries
+Animation (mouvement, vibration, déplacement)
+Différents types de bactéries sélectionnables
+Paramètres modifiables :
+Type de bactérie
+Vitesse de mouvement
+Nombre de bactéries affichées
+Taille
+Couleur
+Mode (statique / dynamique / colonie)
+4. SECTION COMPARAISON
+
+Tableau comparatif :
+
+ADN humain vs ADN bactérien
+Taille
+Structure
+Complexité
+Fonction
+5. SECTION APPLICATIONS
+Médecine
+Biotechnologie
+IA + biologie
+Futur (édition génétique, CRISPR)
+⚙️ TECHNIQUE
+Fichiers attendus :
+index.html
+styles.css
+script.js
+README.md
+Contraintes :
+Site 100% statique (pas de backend)
+Compatible GitHub Pages
+Responsive (desktop + mobile)
+Code clair, structuré, commenté
+Librairies autorisées :
+Three.js (fortement recommandé pour 3D)
+Chart.js (si graphiques)
+AOS (animations scroll)
+✨ UX / INTERACTIONS
+Scroll fluide
+Animations élégantes
+Effets hover premium
+Sections bien espacées
+Expérience immersive
+📘 README.md (OBLIGATOIRE)
+
+Créer un README complet avec :
+
+1. Présentation du projet
+2. Fonctionnalités
+3. Installation (GitHub)
+4. Utilisation
+5. Personnalisation
+6. Technologies utilisées
+7. Améliorations possibles
+🚀 BONUS (si possible)
+Mode plein écran pour visualisation ADN
+Bouton "reset paramètres"
+Mode auto animation ON/OFF
+Effet glow sur ADN
+Interaction souris (drag rotation)
+🎯 OBJECTIF FINAL
+
+Créer un site :
+
+Pédagogique
+Visuellement impressionnant
+Interactif
+Moderne
+Prêt à être publié sur GitHub Pages
